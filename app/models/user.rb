@@ -16,6 +16,8 @@ class User < ApplicationRecord
     has_many :user_fav_tweet_relations, foreign_key: :tweet_id, class_name: 'Fav'
     has_many :user_favs, through: :user_fav_tweet_relations, source: :user_fav
 
+    #has_one :home
+
     validates_presence_of :username, :email, :password_digest
 
     validates :username, uniqueness: { message: "already exist" } 

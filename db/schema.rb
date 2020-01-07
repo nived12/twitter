@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_220324) do
+ActiveRecord::Schema.define(version: 2020_01_07_170602) do
 
   create_table "favs", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 2019_12_26_220324) do
     t.integer "following_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "homes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tweet_id"], name: "index_homes_on_tweet_id"
+    t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
   create_table "tweets", force: :cascade do |t|
@@ -46,5 +55,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_220324) do
 
   add_foreign_key "favs", "tweets"
   add_foreign_key "favs", "users"
+  add_foreign_key "homes", "tweets"
+  add_foreign_key "homes", "users"
   add_foreign_key "tweets", "users"
 end

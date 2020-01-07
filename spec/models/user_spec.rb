@@ -15,6 +15,8 @@ RSpec.describe User, type: :model do
   it { should have_many(:user_fav_tweet_relations).with_foreign_key(:tweet_id).class_name('Fav') }
   it { should have_many(:user_favs).through(:user_fav_tweet_relations).source(:user_fav) }
 
+  #it { should have_one(:home) }
+  
   # Validation tests
   it { should validate_presence_of(:username) }
   it { should validate_presence_of(:email) }

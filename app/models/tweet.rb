@@ -5,5 +5,7 @@ class Tweet < ApplicationRecord
   has_many :tweet_faved_user_relations, foreign_key: :user_id, class_name: 'Fav'
   has_many :tweet_favs, through: :tweet_faved_user_relations, source: :tweet_fav
 
+  #has_one :home
+
   validates_presence_of :description
 end

@@ -9,6 +9,7 @@ RSpec.describe Tweet, type: :model do
   it { should have_many(:tweet_faved_user_relations).with_foreign_key(:user_id).class_name('Fav') }
   it { should have_many(:tweet_favs).through(:tweet_faved_user_relations).source(:tweet_fav) }
 
+  #it { should have_one(:home) }
   # Validation test
   # ensure column description is present before saving
   it { should validate_presence_of(:description) }
