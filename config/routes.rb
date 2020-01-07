@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   post '/:username/tweets/:tweet_id', to: 'favs#create_fav'
   delete '/:username/tweets/:tweet_id', to: 'favs#unfav'
 
-  root 'homes#index'
+  root 'home#index'
 
 end
