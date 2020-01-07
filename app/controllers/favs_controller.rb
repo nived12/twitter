@@ -17,8 +17,7 @@ class FavsController < ApplicationController
     end
 
     def create_fav
-        #follower = @current_user.follows.create(user_id: @current_user.id, following_id: @following_id)
-        #json_response(follower, :created) 
+        #binding.pry
         fav = @current_user.favs.create(user_id: @current_user.id, tweet_id: @tweet_id)
         json_response(fav, :created)        
     end
@@ -34,14 +33,14 @@ class FavsController < ApplicationController
         @user_fav = if @current_user.username == params[:username]
             @current_user.favs
         else
-            @current_user.followings.find_by(username: params[:username]).favs
+            @current_user.followings.find_by!(username: params[:username]).favs
         end
         #@follow = @current_user.follows.find_by!(id: params[:id]) if @current_user
     end
 
 
     def tweet_params
-        @tweet_id = Tweet.find_by(id: params[:tweet_id]).id
-        @tweet_fav = Tweet.find_by(id: params[:tweet_id]).favs
+        @tweet_id = Tweet.find_by!(id: params[:tweet_id]).id
+        @tweet_fav = Tweet.find_by!(id: params[:tweet_id]).favs
     end
 end

@@ -4,11 +4,10 @@ require 'rails_helper'
 RSpec.describe 'Follows API' do
     # Initialize the test data
     let!(:user) { create(:user, username: "nived") }
-    #binding.pry
     let!(:users) { create_list(:user, 4) }
-    #let(:following_id) {create_list(:following_id, 5)}
     let!(:username) { user.username }
     let!(:user_id) {user.id}
+
     let!(:following1) { create(:follow, user_id: user.id, following_id: 4) }
     let!(:following2) { create(:follow, user_id: user.id, following_id: 3) }
     let!(:following3) { create(:follow, user_id: user.id, following_id: 5) }
