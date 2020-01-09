@@ -11,32 +11,32 @@ RSpec.describe 'Tweets API' do
     # authorize request
     let(:headers) { valid_headers }
 
-    # Test suite for GET /users/:user_id/tweets
-    describe 'GET /:username' do
-        before { get "/#{username}", params: {}, headers: headers }
+    # # Test suite for GET /username
+    # describe 'GET /:username' do
+    #     before { get "/#{username}", params: {}, headers: headers }
 
-        context 'when user exists' do
-            it 'returns status code 200' do
-                expect(response).to have_http_status(200)
-            end
+    #     context 'when user exists' do
+    #         it 'returns status code 200' do
+    #             expect(response).to have_http_status(200)
+    #         end
 
-            it 'returns all user tweets' do
-                expect(json.size).to eq(20)
-            end
-        end
+    #         it 'returns all user tweets' do
+    #             expect(json.size).to eq(20)
+    #         end
+    #     end
 
-        context 'when user does not exist' do
-            let(:username) { 'pedro' }
+    #     context 'when user does not exist' do
+    #         let(:username) { 'pedro' }
 
-            it 'returns status code 404' do
-                expect(response).to have_http_status(404)
-            end
+    #         it 'returns status code 404' do
+    #             expect(response).to have_http_status(404)
+    #         end
 
-            it 'returns a not found message' do
-                expect(response.body).to match(/Couldn't find User/)
-            end
-        end
-    end
+    #         it 'returns a not found message' do
+    #             expect(response.body).to match(/Couldn't find User/)
+    #         end
+    #     end
+    # end
 
     # Test suite for GET /users/:user_id/tweets/:id
     describe 'GET /:username/tweets/:tweet_id' do

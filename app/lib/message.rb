@@ -30,6 +30,10 @@ class Message
     def self.account_not_created
       'Account could not be created'
     end
+
+    def self.account_edited
+      'Account edited successfuly'
+    end
   
     def self.expired_token
       'Sorry, your token has expired. Please login to continue.'

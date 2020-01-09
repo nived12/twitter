@@ -13,6 +13,7 @@ class AuthenticateUser
 
   private
   #Se encuentra en private, para que solamente se pueda usar dentro de la clase AuthenticateUser
+  #Con attr_reader podemos obtener las variables fuera de su clase como variables de instancia
   attr_reader :username, :password
 
   # verify user credentials
@@ -20,6 +21,7 @@ class AuthenticateUser
     #Busca el usuario por su username
     user = User.find_by(username: username)
     #Si se encuentra el usuario con su contraseña, permite realizar el metodo call y asi regresar un token
+    #authenticate evalua el password que se obtiene en initialize y has_secure_password dentro del modelo User
     return user if user && user.authenticate(password)
     # raise Authentication error if credentials are invalid
     raise(ExceptionHandler::AuthenticationError, Message.invalid_credentials)

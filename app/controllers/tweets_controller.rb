@@ -1,27 +1,16 @@
 class TweetsController < ApplicationController
     before_action :set_user_tweet, only: [:show, :destroy]
     before_action :get_user_tweets, only: [:index]
-    # before_action :tweet_params, only: [:create]
 
-    # GET /users/:user_id/tweets
+    # GET /:username
     def index
-        json_response(@tweet_user)
+        render json: @tweet_user#, each_serializer: SimpleFavSerializer
     end
 
     # GET /users/:user_id/tweets/:id
     def show
         json_response(@tweet)
     end
-
-    # POST compose/tweet
-    # def create
-    #     # Crea un tweet del usuario actual, permitiendo el parametro 
-    #     # description del metodo tweet_params
-    #     unless @tweet_params.blank?
-    #         tweet = @current_user.tweets.create(@tweet_params)
-    #         json_response(tweet, :created)
-    #     end
-    # end
 
     def create
         #Crea un tweet del usuario actual, permitiendo el parametro 
@@ -47,10 +36,6 @@ class TweetsController < ApplicationController
     def tweet_params
         params.permit(:description) 
     end
-
-    # def set_user
-    #     @user = User.find(params[:user_id])
-    # end
 
     def get_user_tweets
         @tweet_user = if @current_user.username == params[:username]

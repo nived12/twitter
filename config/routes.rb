@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   post 'login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
+  put '/settings/screen_name', to: 'users#update'
+  delete 'delete', to: 'users#destroy'
+  # get "/:username", to: 'users#show'
   post 'compose/tweet', to: 'tweets#create'
   get "/:username", to: 'tweets#index'
   delete "/:username/tweets/:tweet_id", to: 'tweets#destroy'

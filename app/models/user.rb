@@ -3,7 +3,6 @@ class User < ApplicationRecord
     has_secure_password
     
     has_many :tweets, dependent: :destroy
-    #has_many :fav_tweets, through: :favs, foreign_key: "tweet_id", source: :tweet, dependent: :destroy
     has_many :follows, dependent: :destroy
     has_many :favs, dependent: :destroy
 
@@ -16,9 +15,7 @@ class User < ApplicationRecord
     has_many :user_fav_tweet_relations, foreign_key: :tweet_id, class_name: 'Fav'
     has_many :user_favs, through: :user_fav_tweet_relations, source: :user_fav
 
-    #has_one :home
-
-    validates_presence_of :username, :email, :password_digest
+    validates_presence_of :username, :email, :password_digest #, :new_username
 
     validates :username, uniqueness: { message: "already exist" } 
     validates :email, uniqueness: { message: "already exist" }
